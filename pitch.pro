@@ -347,7 +347,7 @@ unix{
     INCLUDEPATH += rtAudio/
     DEPENDPATH += rtAudio/
     HEADERS += rtAudio/audio_stream.h rtAudio/RtAudio.h rtAudio/RtError.h
-    SOURCES += rtAudio/audio_stream.cpp rtAudio/rtAudio.cpp
+    SOURCES += rtAudio/audio_stream.cpp rtAudio/RtAudio.cpp
 
     QMAKE_LFLAGS_SONAME = -W1,-install_name,@executable_path/..Frameworks/
     INCLUDEPATH += $$MY_INCLUDE_PATH
@@ -376,7 +376,7 @@ unix{
     INCLUDEPATH += rtAudio/
     DEPENDPATH += rtAudio/
     HEADERS += rtAudio/audio_stream.h rtAudio/RtAudio.h rtAudio/RtError.h
-    SOURCES += rtAudio/audio_stream.cpp rtAudio/rtAudio.cpp
+    SOURCES += rtAudio/audio_stream.cpp rtAudio/RtAudio.cpp
     DEFINES += __LINUX_OSS__
     DEFINES += __LINUX_ALSA__
     #DEFINES += __LINUX_JACK__  #Uncomment to use Jack. Note untested.
