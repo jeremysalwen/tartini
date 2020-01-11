@@ -61,6 +61,7 @@ NoteData::NoteData( const Channel & p_channel
 , m_prev_extremum_pitch(-1)
 , m_prev_extremum(NONE)
 {
+    printf("NoteData Constructor m_loop_start=%d m_start_chunk=%d framesPerChunk()=%d m_loop_step=%d\n", m_loop_start, m_start_chunk, m_channel->framesPerChunk(), m_loop_step);
     m_nsdf_aggregate_data.resize(p_channel.get_nsdf_data().size(), 0.0f);
     m_nsdf_aggregate_data_scaled.resize(p_channel.get_nsdf_data().size(), 0.0f);
 }
@@ -111,6 +112,8 @@ void NoteData::addVibratoData(int p_chunk)
         int l_loop_limit = ((p_chunk + 1) * m_channel->framesPerChunk()) - m_loop_step;
         for(int l_current_time = m_loop_start; l_current_time < l_loop_limit; l_current_time += m_loop_step)
         {
+            printf("assertion m_loop_start=%d current_time=%d loop_step=%d pitch_lookup_size=%d\n",m_loop_start, l_current_time, m_loop_step, m_channel->get_pitch_lookup_smoothed().size());
+            fflush(stdout);
             myassert(l_current_time + m_loop_step < (int)m_channel->get_pitch_lookup_smoothed().size());
             myassert(l_current_time - m_loop_step >= 0);
             float l_prev_pitch = m_channel->get_pitch_lookup_smoothed().at(l_current_time - m_loop_step);

@@ -319,9 +319,8 @@ void Channel::processNewChunk(FilterState * p_filter_state)
              m_parent->currentRawChunk() == MAX(0, m_parent->currentStreamChunk()));
     m_lookup.push_back(AnalysisData());
     m_lookup.back().setFilterState(*p_filter_state);
-#ifdef DEBUG_PRINTF
     printf("lookup=%d\n", m_lookup.size());
-#endif // DEBUG_PRINTF
+    fflush(stdout);
     m_parent->calculateAnalysisData(/*begin(), */int(m_lookup.size()) - 1, this/*, threshold()*/);
 }
 
